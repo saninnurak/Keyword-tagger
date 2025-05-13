@@ -78,6 +78,6 @@ if __name__ == '__main__':
         sentences = load_sentences(input_file)
         tagged = extract_tags(sentences)
         save_to_tsv(tagged)
-        print("Improved tags extracted and saved to task_1_output.tsv")
+        print("Improved tags extracted and saved to output/task_1_output_solution_2.tsv")
     else:
         print(f"Input file {input_file} not found.")
