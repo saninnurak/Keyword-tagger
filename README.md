@@ -13,20 +13,29 @@ Each method processes input sentences and produces a tab-separated output file w
 
 Follow the steps below to install and run the project:
 
-1. **Clone this repository** to your local machine:
+1. **Ensure Python Version 3.11.9 is Installed**  
+    This project requires **Python 3.11.9**. To check your Python version, use the following command:
 
     ```bash
-    git clone https://github.com/saninnurak/Keyword-tagger.git
+    python --version
+    ```
+
+    If you're using a different version of Python, please install **Python 3.11.9** for compatibility.
+
+2. **Clone this repository** to your local machine:
+
+    ```bash
+    git clone https://github.com/saninnurak/Tag_extractor.git
     cd Keyword-tagger
     ```
 
-2. **Create a virtual environment** (optional but recommended):
+3. **Create a virtual environment** (optional but recommended):
 
     ```bash
     python -m venv venv
     ```
 
-3. **Activate the virtual environment:**
+4. **Activate the virtual environment:**
 
     - On **Windows**:
 
@@ -40,7 +49,7 @@ Follow the steps below to install and run the project:
         source venv/bin/activate
         ```
 
-4. **Install the required dependencies** using pip:
+5. **Install the required dependencies** using pip:
 
     ```bash
     pip install -r requirements.txt
