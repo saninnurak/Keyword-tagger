@@ -19,7 +19,7 @@ Dependencies:
 
 Use when: You want semantic, context-rich keyword tagging.
 
-Output: `output/task_1_output_solution_2.tsv`
+Output: `output/task_2_output.tsv`
 """
 
 
@@ -63,7 +63,7 @@ def extract_tags(sentences, top_n=5):
     return results
 
 # Save output to TSV
-def save_to_tsv(tagged_sentences, file_path='output/task_1_output_solution_2.tsv'):
+def save_to_tsv(tagged_sentences, file_path='output/task_2_output.tsv'):
     with open(file_path, 'w', encoding='utf-8') as f:
         for sentence, tags in tagged_sentences:
             if tags:
@@ -78,6 +78,6 @@ if __name__ == '__main__':
         sentences = load_sentences(input_file)
         tagged = extract_tags(sentences)
         save_to_tsv(tagged)
-        print("Improved tags extracted and saved to output/task_1_output_solution_2.tsv")
+        print("Improved tags extracted and saved to output/task_2_output.tsv")
     else:
         print(f"Input file {input_file} not found.")
