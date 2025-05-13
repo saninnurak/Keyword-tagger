@@ -13,7 +13,14 @@ Each method processes input sentences and produces a tab-separated output file w
 
 Follow the steps below to install and run the project:
 
-1. **Ensure Python Version 3.11.9 is Installed**  
+1. **Clone this repository** to your local machine:
+
+    ```bash
+    git clone https://github.com/saninnurak/Tag_extractor.git
+    cd Keyword-tagger
+    ```
+
+2. **Ensure Python Version 3.11 is Installed**  
     This project requires **Python 3.11.9**. To check your Python version, use the following command:
 
     ```bash
@@ -22,12 +29,6 @@ Follow the steps below to install and run the project:
 
     If you're using a different version of Python, please install **Python 3.11.9** for compatibility.
 
-2. **Clone this repository** to your local machine:
-
-    ```bash
-    git clone https://github.com/saninnurak/Tag_extractor.git
-    cd Keyword-tagger
-    ```
 
 3. **Create a virtual environment** (optional but recommended):
 
