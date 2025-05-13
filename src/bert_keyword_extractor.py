@@ -1,3 +1,28 @@
+"""
+Semantic Keyword Tagger using KeyBERT and SentenceTransformers
+
+This script uses a pre-trained BERT-based embedding model to extract semantically
+relevant keywords from a list of input sentences. It performs the following steps:
+- Loads a SentenceTransformer model (`all-MiniLM-L6-v2`)
+- Uses KeyBERT to extract top N keyphrases per sentence, based on embeddings
+- Applies MMR (Maximal Marginal Relevance) to ensure keyword diversity
+- Filters out domain-specific custom stopwords
+- Saves tagged sentences and keywords in a tab-separated format
+
+The result is more context-aware tagging than rule-based methods,
+making it suitable for more nuanced or semantic applications.
+
+Dependencies:
+- keybert
+- sentence-transformers
+- torch (indirect via model)
+
+Use when: You want semantic, context-rich keyword tagging.
+
+Output: `output/task_1_output_solution_2.tsv`
+"""
+
+
 from keybert import KeyBERT
 from sentence_transformers import SentenceTransformer
 import os
@@ -38,7 +63,7 @@ def extract_tags(sentences, top_n=5):
     return results
 
 # Save output to TSV
-def save_to_tsv(tagged_sentences, file_path='task_1_output.tsv'):
+def save_to_tsv(tagged_sentences, file_path='output/task_1_output_solution_2.tsv'):
     with open(file_path, 'w', encoding='utf-8') as f:
         for sentence, tags in tagged_sentences:
             if tags:
