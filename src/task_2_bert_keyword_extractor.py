@@ -20,6 +20,10 @@ Dependencies:
 Use when: You want semantic, context-rich keyword tagging.
 
 Output: `output/task_2_output.tsv`
+
+Potential improvements: Implement some testing method to check quality of tags,
+add more tags that can be connected to sentences
+
 """
 
 
@@ -29,9 +33,8 @@ import os
 import string
 
 # Optional: domain-specific stopwords
-custom_stopwords = set([
-    'account', 'bank', 'aiqfinancial', 'checking', 'savings', 'hello',
-    'thanks', 'thank', 'please', 'hi', 'help', 'need', 'information'
+custom_stopwords = set([ # noqa
+    'Hi', 'there', 'hello','thanks', 'thank', 'please', 'hi', 'help', 'need'
 ])
 
 def clean_text(text):

@@ -1,5 +1,5 @@
 """
-Optimized Rule-Based N-Gram Keyword Tagger
+Rule-Based N-Gram Keyword Tagger
 
 This script reads a list of sentences from a text file and extracts keywords
 based on n-gram frequency. It includes the following steps:
@@ -15,6 +15,8 @@ of tags, and better handling of short words and digits.
 Use when: You want fast, interpretable keyword tagging without ML dependencies.
 
 Output: `output/task_1_output.tsv`
+
+Potential Improvments: Implement some testing method to check quality of tags
 """
 
 import re
@@ -28,7 +30,7 @@ nltk.download('stopwords', quiet=True)
 from nltk.corpus import stopwords
 
 STOPWORDS = set(stopwords.words('english'))
-JUNK_WORDS = set(['000000', 'acct'])
+JUNK_WORDS = set(['000000', 'acct']) # noqa
 MIN_TOKEN_LENGTH = 3
 
 def normalize(text):
