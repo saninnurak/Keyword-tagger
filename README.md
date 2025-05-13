@@ -16,7 +16,7 @@ Follow the steps below to install and run the project:
 1. **Clone this repository** to your local machine:
 
     ```bash
-    git clone https://github.com/saninnurak/Tag_extractor.git
+    git clone https://github.com/saninnurak/Keyword-tagger.git
     cd Keyword-tagger
     ```
 
@@ -55,7 +55,7 @@ Once you've set up the project, you can run both the taggers as follows:
 To run the rule-based n-gram keyword tagger, use the following command:
 
 ```bash
-python .\src\task_1_rule_based_key_extractor.py
+python .\src\task_1_rule_based_keyword_extractor.py
 ```
 This will generate a tab-separated file with tags for each sentence, based on the rule-based n-gram extraction.
 
