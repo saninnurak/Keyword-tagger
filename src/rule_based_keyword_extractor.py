@@ -14,7 +14,7 @@ of tags, and better handling of short words and digits.
 
 Use when: You want fast, interpretable keyword tagging without ML dependencies.
 
-Output: `output/task_1_output321.tsv`
+Output: `output/task_1_output.tsv`
 """
 
 import re
