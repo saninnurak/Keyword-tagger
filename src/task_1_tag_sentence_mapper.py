@@ -1,6 +1,38 @@
+"""
+Rule-Based Tagging Script (Task 1)
+----------------------------------
+
+This script implements a simple rule-based tagging system for sentences using predefined keyword-tag mappings.
+
+Functionality:
+- Loads sentence data from 'data/sentences.txt'.
+- Loads tags and associated keywords from 'data/tags.csv'.
+- For each sentence, it checks for presence of any tag-related keywords (case-insensitive match).
+- Outputs results in 'output/task_1_output.tsv' with format:
+    sentence<TAB>tag1, tag2, tag3
+
+File structure:
+- Input:
+    - data/sentences.txt — one sentence per line
+    - data/tags.csv — CSV file with columns: id, name, keywords (Python list)
+- Output:
+    - output/task_1_output.tsv — tab-separated file with 'sentence' and 'tags' columns
+
+Example output line:
+    The system integrates AI and automation.    Artificial Intelligence, Automation
+
+This rule-based approach is fast but limited to exact or substring keyword matches.
+
+Usage:
+    python task_1_tag_sentence_mapper.py
+
+"""
+
+
 import csv
 import ast
 import time
+
 from datetime import datetime
 
 # Helper to print with timestamp

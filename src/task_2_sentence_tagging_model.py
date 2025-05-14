@@ -1,3 +1,48 @@
+"""
+Semantic Sentence Tagger using Sentence Transformers & Neural Network (Task 2)
+-------------------------------------------------------------------------------
+
+This script implements a machine learning-based multi-label tagger for sentences using sentence embeddings
+and a simple neural network classifier. It outputs a tab-separated file mapping sentences to predicted tags.
+
+Method Overview:
+- Tags and associated keywords are loaded from `data/tags.csv`.
+- Sentences are loaded from `data/sentences.txt`.
+- Training data is synthesized by linking keywords to tags.
+- Sentences and keywords are embedded using a SentenceTransformer model.
+- A neural network is trained on these embeddings to learn tag associations.
+- Inference is performed on all input sentences, and predictions are thresholded.
+- Results are saved to `output/task_2_output.tsv` in the required format:
+    sentence<TAB>tag1, tag2, tag3
+
+Output format requirement met:
+- Each line includes a sentence followed by a tab and comma-separated tags.
+- If no tags are predicted, the line contains the sentence followed by a tab only.
+
+File structure:
+- Input:
+    - `data/sentences.txt` — One sentence per line
+    - `data/tags.csv` — Must include columns: `name`, `keywords` (Python list)
+- Output:
+    - `output/task_2_output.tsv`
+
+Example output line:
+    This project uses GPT-based models.    NLP, Large Language Models
+
+Model:
+- Sentence embeddings via: `paraphrase-MiniLM-L6-v2`
+- Classifier: Feedforward neural network with dropout and binary crossentropy loss
+
+Usage:
+    python task_2_sentence_tagging_model.py
+    Optional: `--threshold 0.3` to control prediction sensitivity
+    """
+
+
+import pandas as pd
+import numpy as np
+import os
+
 from typing import List, Tuple
 from sklearn.preprocessing import MultiLabelBinarizer
 from sentence_transformers import SentenceTransformer
@@ -6,10 +51,6 @@ from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
 
-
-import pandas as pd
-import numpy as np
-import os
 
 def load_data(tags_path: str, sentences_path: str) -> Tuple[pd.DataFrame, List[str]]:
     task_df = pd.read_csv(tags_path)
