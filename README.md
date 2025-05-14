@@ -23,7 +23,7 @@ Follow the steps below to install and run the project:
 2. **Clone this repository** to your local machine:
 
     ```bash
-    git clone https://github.com/saninnurak/Tag_extractor.git
+    git clone https://github.com/saninnurak/Keyword-tagger.git
     cd Keyword-tagger
     ```
 
