@@ -115,3 +115,9 @@ Below is a comparison of the two tagging approaches implemented in this project:
 | **Performance**              | ⚡ Fast, minimal dependencies                                    | 🧠 Slower (model loading & training) but more flexible               |
 | **Output File**              | `output/task_1_output.tsv`                                      | `output/task_2_output.tsv`                                          |
 | **Best Used For**            | Simple, deterministic use cases with clear keyword-tag mapping  | Complex language understanding and flexible tag inference            |
+
+## 🙋‍♂️ Maintainer
+
+**Sanin Nurak**  
+📧 [saninnurak@hotmail.com](mailto:saninnurak@hotmail.com)  
+🔗 [github.com/saninnurak](https://github.com/saninnurak)
