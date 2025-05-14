@@ -95,4 +95,4 @@ def main(threshold: float = 0.2):
     save_predictions(sentences, predicted_tags, output_path)
 
 if __name__ == "__main__":
-    main(threshold=0.3)  # Lower threshold for broader predictions
+    main(threshold=0.4)  # Lower threshold for broader predictions
