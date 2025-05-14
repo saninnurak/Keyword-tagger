@@ -1,11 +1,9 @@
-# Semantic and Rule-Based Keyword Tagger
+# 🏷️ Sentence Tagging System (Rule-Based & Semantic ML)
 
-This repository contains two approaches to sentence tagging based on a provided dataset :
+This project performs **multi-label classification** on sentences using two complementary approaches:
 
-1. **Task 1 - Rule-Based N-Gram Tagger**  
-2. **Task 2 - Semantic Tagger using KeyBERT and SentenceTransformers**
-
-Each method processes input sentences and produces a tab-separated output file with appropriate tags. These solutions meet the requirements of the assignment as outlined below.
+- ✅ **Task 1:** Rule-based tag assignment using keyword and n-gram matching  
+- ✅ **Task 2:** Semantic tagging with sentence embeddings and a neural network
 
 ---
 
@@ -14,13 +12,13 @@ Each method processes input sentences and produces a tab-separated output file w
 Follow the steps below to install and run the project:
 
 1. **Ensure Python Version 3.11.9 is Installed**  
-    This project requires **Python 3.11.9**. To check your Python version, use the following command:
+   This project requires **Python 3.11.9**. To check your Python version, use the following command:
 
     ```bash
     python --version
     ```
 
-    If you're using a different version of Python, please install **Python 3.11.9** for compatibility.
+   If you're using a different version of Python, please install **Python 3.11.9** for compatibility.
 
 2. **Clone this repository** to your local machine:
 
@@ -54,31 +52,37 @@ Follow the steps below to install and run the project:
     ```bash
     pip install -r requirements.txt
     ```
-   
-## 🚀 Running the Taggers
+
+## 🚀  How to Run
 
 Once you've set up the project, you can run both the taggers as follows:
 
-### Task 1 - Rule-Based N-Gram Tagger
+### ✅ Task 1
 
-To run the rule-based n-gram keyword tagger, use the following command:
 
 ```bash
-python .\src\task_1_rule_based_keyword_extractor.py
+python .\src\task_1_tag_sentence_mapper.py
 ```
-This will generate a tab-separated file with tags for each sentence, based on the rule-based n-gram extraction.
 
-### Task 2 - Semantic Tagger using KeyBERT and SentenceTransformers
+This method matches n-grams in input sentences to predefined keywords listed in data/tags.csv
+
+### Task 2
 
 To run the semantic tagger, use the following command:
 
 ```bash
-python .\src\task_2_bert_keyword_extractor.py
+python .\src\task_2_sentence_tagging_model.py
 ```
-This will generate a tab-separated file with semantic tags for each sentence, leveraging machine learning models for keyword extraction.
 
+Optionally, you can adjust the confidence threshold for tag prediction (default is 0.3):
+```bash
+python .\src\task_2_sentence_tagging_model.py --threshold 0.3
+```
+
+This method embeds sentences and tags using sentence-transformers and trains a neural network for semantic multi-label classification.
 
 ## 📁 Directory Structure
+
 ```plaintext
 project/
 ├── data/
@@ -87,22 +91,27 @@ project/
 ├── output/
 │   ├── task_1_output.tsv                   # Output from rule-based tagger
 │   └── task_2_output.tsv                   # Output from semantic tagger
-├── task_1_rule_based_key_extractor.py      # Rule-based n-gram keyword tagger
-├── task_2_bert_keyword_extractor.py        # Semantic tagging using ML
+├── task_1_tag_sentence_mapper.py           # Rule-based n-gram keyword tagger
+├── task_2_sentence_tagging_model.py        # Semantic tagging using ML
+├── Notebook for prototyping.ipynb          # Jupyter notebook with prototypes 
 ├── requirements.txt                        # Dependencies
 └── README.md                               # This file
 ```
-## ⚖️ Key Differences
 
-Below is a comparison of the two tagger scripts:
+## ## ⚖️ Key Differences
 
-| **Aspect**               | **Script 1 (extract_keywords, tag_sentences)**            | **Script 2 (KeyBERT + SentenceTransformer)**                       |
-|--------------------------|----------------------------------------------------------|--------------------------------------------------------------------|
-| **Methodology**           | Rule-based, using n-grams, stopwords, frequency filtering| Embedding-based, semantic keyword extraction using KeyBERT         |
-| **ML/AI Model**           | ❌ No ML — pure NLP rules                                | ✅ Yes — uses SentenceTransformer (MiniLM) with KeyBERT             |
-| **Keyword Extraction Logic**| - Generate 1–3 n-grams <br> - Filter by frequency and junk words | - Uses transformer embeddings <br> - Ranks based on relevance      |
-| **Stopwords**             | NLTK stopwords + manual junk words                       | KeyBERT stopwords + custom stopwords                               |
-| **Tag Matching Logic**    | Matches extracted keywords directly from n-gram space    | Extracts most relevant keywords semantically using sentence meaning |
-| **Code Style**            | More manual and deterministic                           | More abstract, less code but depends on heavy NLP libraries        |
-| **Performance**           | Lightweight, fast                                       | Heavier due to model loading and embedding                         |
-| **Output File**           | output/task_1_output.tsv                                | output/task_2_output.tsv                                           |
+Below is a comparison of the two tagging approaches implemented in this project:
+
+| **Aspect**                   | **Task 1: Rule-Based Tagger**                                  | **Task 2: Semantic ML Tagger**                                      |
+|------------------------------|------------------------------------------------------------------|----------------------------------------------------------------------|
+| **Script**                   | `task_1_tag_sentence_mapper.py`                                 | `task_2_sentence_tagging_model.py`                                   |
+| **Methodology**              | Keyword matching using n-grams and predefined tag keywords       | Sentence embeddings + neural network for tag classification          |
+| **ML/AI Model**              | ❌ No — purely deterministic using rules                         | ✅ Yes — uses SentenceTransformer + Keras neural network              |
+| **Input Data**               | `tags.csv` (keywords per tag) + `sentences.txt`                 | Same                                                               |
+| **Text Representation**      | Plain text, n-gram generation                                   | Semantic vector representation using `paraphrase-MiniLM-L6-v2`       |
+| **Keyword/Tag Matching**     | Matches lowercase n-grams against keyword lists                 | Predicts tags based on sentence meaning                             |
+| **Label Handling**           | One or multiple tags per sentence (if keywords match)           | Multi-label classification with threshold                           |
+| **Stopwords Handling**       | NLTK stopwords + custom junk filter                             | Implicit — handled by sentence embedding model                      |
+| **Performance**              | ⚡ Fast, minimal dependencies                                    | 🧠 Slower (model loading & training) but more flexible               |
+| **Output File**              | `output/task_1_output.tsv`                                      | `output/task_2_output.tsv`                                          |
+| **Best Used For**            | Simple, deterministic use cases with clear keyword-tag mapping  | Complex language understanding and flexible tag inference            |
